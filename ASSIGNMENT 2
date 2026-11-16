@@ -1,0 +1,202 @@
+Q1. List the four fundamental cryptographic goals/objectives.
+
+The four fundamental objectives of cryptography are:
+1. Confidentiality
+2. Integrity
+3. Authentication
+4. Non-repudiation
+Q2. Define Confidentiality as a cryptographic goal with one example.
+
+Confidentiality means protecting information from unauthorized access and ensuring that only authorized people can read it.
+
+Example: Online banking uses encryption to protect customers' passwords and account details.
+
+Q3. Explain each cryptographic objective in detail with real-world scenarios. Why is it important to achieve all four together?
+
+The four main objectives of cryptography are:
+
+1. Confidentiality
+
+Confidentiality ensures that information is accessible only to authorized users. Encryption is used to protect sensitive data.
+
+Example: Online banking encrypts customer information during transactions.
+
+2. Integrity
+
+Integrity ensures that data remains accurate and unchanged during storage or transmission.
+
+Example: A hash value can be used to check whether a downloaded file has been modified.
+
+3. Authentication
+
+Authentication verifies the identity of a person, device or system before allowing communication or access.
+
+Example: OTP verification confirms a user's identity during online banking.
+
+4. Non-repudiation
+
+Non-repudiation ensures that a sender cannot easily deny sending or approving a digitally signed message.
+
+Example: A digital signature on an electronic agreement provides evidence of approval.
+
+Importance of achieving all four together:
+
+All four objectives are important because confidentiality protects privacy, integrity prevents tampering, authentication confirms identity, and non-repudiation provides proof of actions. Together, they establish secure and trustworthy communication.
+
+Q4. What is the difference between a substitution cipher and a transposition cipher? Give one example of each.
+Substitution Cipher	Transposition Cipher
+Replaces each character with another character.	Changes the positions of characters.
+The original order is generally maintained.	The original characters remain but their order changes.
+Example: Caesar Cipher.	Example: Rail Fence Cipher.
+
+Q5. Discuss the evolution from classical ciphers to modern cryptographic standards (DES → AES, RSA, SHA). Highlight key milestones and motivations for change.
+
+Cryptography has evolved from simple manual encryption methods to advanced computer-based algorithms.
+
+1. Classical Ciphers
+
+Early encryption methods included Caesar and Vigenère ciphers. They used substitution and transposition techniques but were vulnerable to frequency analysis.
+
+2. DES (1977)
+
+The Data Encryption Standard was introduced as a symmetric encryption algorithm. It uses a 56-bit effective key and a 64-bit block size. Its short key eventually became vulnerable to brute-force attacks.
+
+3. Triple DES
+
+Triple DES was developed to improve DES security by applying the DES algorithm three times.
+
+4. AES (2001)
+
+Advanced Encryption Standard replaced DES. It supports 128-bit, 192-bit and 256-bit keys and provides stronger security and better performance.
+
+5. RSA (1977)
+
+RSA introduced practical public-key encryption and digital signatures. It uses public and private keys.
+
+6. SHA (Secure Hash Algorithm)
+
+SHA algorithms are used to generate fixed-length message digests for integrity verification and other security applications.
+
+Motivations for change:
+- Increasing computational power.
+- Growth of internet communication.
+- Need for stronger encryption.
+- Protection against brute-force and cryptographic attacks.
+- Requirement for secure digital transactions.
+Thus, modern cryptographic standards provide stronger protection than classical encryption methods.
+
+Q6. What is a key in cryptography, and why is key management important?
+
+A cryptographic key is a piece of information used by an encryption algorithm to encrypt or decrypt data. Key management is important because keys must be generated, stored, distributed and updated securely. If a key is stolen or exposed, protected information may become vulnerable.
+
+Q7. Explain how cryptographic techniques protect data during transmission, prevent unauthorized access, and detect tampering in a network.
+
+Cryptography protects computer networks by securing data during communication.
+
+1. Data Protection During Transmission
+
+Encryption converts readable data into ciphertext so unauthorized people cannot understand it.
+
+Example: HTTPS uses TLS encryption to protect communication between browsers and websites.
+
+2. Prevention of Unauthorized Access
+
+Authentication techniques verify the identity of users before allowing access.
+
+Example: Digital certificates and secure authentication mechanisms help verify servers and users.
+
+3. Detection of Data Tampering
+
+Hash functions and message authentication codes help detect unauthorized changes in transmitted data.
+
+Example: SHA-256 can generate a hash value that helps verify whether a file has changed.
+
+4. Secure Communication
+
+Protocols such as TLS and IPSec use cryptographic techniques to protect network communication.
+
+Therefore, cryptography provides confidentiality, authentication and integrity in computer networks.
+
+Q8. Differentiate between a passive attack and an active attack on a cryptographic system, with one example of each.
+Passive Attack	Active Attack
+Attacker secretly monitors communication.	Attacker modifies or disrupts communication.
+Does not directly change the data.	Changes, inserts or deletes data.
+Difficult to detect.	Often easier to detect.
+Example: Eavesdropping.	Example: Message modification or replay attack.
+
+Q9. Describe how cryptographic techniques evolved historically to counter emerging security threats. Include the shift from symmetric-only systems to asymmetric cryptography.
+
+Cryptographic techniques have evolved to provide stronger security as communication systems and technology have developed.
+
+1. Classical Cryptography
+
+Early systems used Caesar and Vigenère ciphers. These methods were simple and could be broken through frequency analysis.
+
+2. Mechanical Cryptography
+
+During World War II, the Enigma machine was used to encrypt military messages. It demonstrated the importance of complex encryption systems.
+
+3. Symmetric Cryptography
+
+Modern symmetric algorithms such as DES and AES use the same secret key for encryption and decryption. They provide fast data encryption but require secure key distribution.
+
+4. Key Distribution Problem
+
+In symmetric cryptography, both parties must share a secret key securely. Sharing this key over an insecure network creates a security risk.
+
+5. Introduction of Asymmetric Cryptography
+
+In 1976, Diffie and Hellman introduced public-key cryptography. It uses two keys: a public key and a private key.
+
+The public key can be shared openly, while the private key remains secret. This helps solve the key-distribution problem.
+
+6. Modern Applications
+
+RSA, ECC, AES and SHA are widely used in modern security systems for encryption, key exchange, digital signatures and integrity verification.
+
+Thus, cryptography evolved to overcome the weaknesses of earlier techniques and provide secure digital communication.
+
+Q10. Give one example each of a modern symmetric algorithm and a modern asymmetric algorithm used today.
+- Symmetric algorithm: AES (Advanced Encryption Standard).
+- Asymmetric algorithm: RSA (Rivest–Shamir–Adleman).
+Q11. Discuss the classification of cryptography into Classical Cryptography and Modern Cryptography. Explain the transition from manual/mechanical methods to computer-based algorithms.
+
+Cryptography is broadly classified into two types:
+
+1. Classical Cryptography
+
+Classical cryptography uses manual or mechanical methods to encrypt messages.
+
+Examples:
+- Caesar Cipher
+- Vigenère Cipher
+- Playfair Cipher
+- Rail Fence Cipher
+- Enigma Machine
+Features:
+- Uses simple mathematical operations.
+- Can be performed manually.
+- Provides limited security.
+- Vulnerable to frequency analysis and other attacks.
+2. Modern Cryptography
+
+Modern cryptography uses computers, mathematical algorithms and complex keys to secure information.
+
+Examples:
+- DES
+- AES
+- RSA
+- ECC
+- SHA
+Features:
+- Uses advanced mathematical techniques.
+- Provides stronger security.
+- Supports secure internet communication.
+- Protects data confidentiality and integrity.
+- Supports authentication and digital signatures.
+Transition from classical to modern cryptography:
+
+The development of computers increased the need for stronger encryption. Classical methods became insufficient against advanced attacks. DES introduced modern computer-based symmetric encryption, AES improved encryption security, and RSA introduced practical public-key cryptography.
+
+Conclusion: Modern cryptography provides advanced security for banking, online shopping, messaging and network communication.
+
