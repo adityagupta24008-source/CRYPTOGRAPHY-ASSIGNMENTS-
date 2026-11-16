@@ -1,0 +1,171 @@
+Q1. Define cryptography in your own words. What are the three main goals it tries to achieve?
+
+Cryptography is the technique of protecting information by converting readable data into an unreadable format so that unauthorized people cannot access it.
+
+Its three main goals are:
+1. Confidentiality: Protecting information from unauthorized access.
+2. Integrity: Ensuring that information is not modified or changed without permission.
+3. Authentication: Verifying the identity of the sender or receiver.
+Q2. Differentiate between plaintext and ciphertext with a simple example.
+- Plaintext: Original readable information before encryption.
+- Ciphertext: Unreadable information produced after encryption.
+Example:
+- Plaintext: HELLO
+- Ciphertext: KHOOR (using Caesar cipher with a shift of 3).
+Q3. Explain the concept of cryptography in detail. Discuss why it is essential in the modern digital world, giving at least three real-life applications.
+
+Cryptography is a method of securing digital information using mathematical techniques and algorithms. It converts plaintext into ciphertext through encryption and converts it back into plaintext through decryption using a key.
+
+Importance of cryptography:
+1. Data Protection: Protects sensitive information from unauthorized access.
+2. Secure Communication: Allows people to exchange information securely over the internet.
+3. Data Integrity: Prevents unauthorized modification of information.
+4. Authentication: Verifies the identity of users and devices.
+5. Privacy: Protects personal and confidential information.
+Real-life applications:
+1. Online Banking: Cryptography protects bank account details, passwords and online transactions.
+2. Messaging Applications: Applications such as WhatsApp use encryption to protect private conversations.
+3. E-commerce: Online shopping websites use HTTPS encryption to protect payment and customer information.
+4. Email Security: Cryptography protects confidential email messages and attachments.
+Therefore, cryptography is essential for maintaining privacy, trust and security in the modern digital world.
+
+Q4. What is the difference between encryption and decryption?
+- Encryption: The process of converting readable plaintext into unreadable ciphertext using an encryption algorithm and key.
+- Decryption: The process of converting ciphertext back into its original readable form using the correct decryption key.
+Example: HELLO → Encryption → KHOOR → Decryption → HELLO.
+
+Q5. Describe the two major types of cryptography — Symmetric Key Cryptography and Asymmetric Key Cryptography. Compare them based on key usage, speed, security, and typical use cases.
+
+Cryptography is mainly divided into two types:
+
+1. Symmetric Key Cryptography
+
+Symmetric cryptography uses the same secret key for both encryption and decryption.
+
+Features:
+- Uses one common secret key.
+- Encryption and decryption are fast.
+- The secret key must be shared securely.
+- Suitable for encrypting large amounts of data.
+Examples:
+- AES (Advanced Encryption Standard)
+- DES (Data Encryption Standard)
+- 3DES (Triple DES)
+2. Asymmetric Key Cryptography
+
+Asymmetric cryptography uses two different keys: a public key and a private key.
+
+Features:
+- Public key is shared openly.
+- Private key is kept secret.
+- Generally slower than symmetric encryption.
+- Supports secure key exchange and digital signatures.
+Examples:
+- RSA
+- ECC (Elliptic Curve Cryptography)
+- ElGamal
+Difference between symmetric and asymmetric cryptography:
+Basis	Symmetric	Asymmetric
+Keys	One secret key	Public and private keys
+Speed	Fast	Comparatively slow
+Key distribution	Difficult	Easier
+Security	Depends on secret key protection	Depends on private key protection and mathematical problems
+Uses	File and data encryption	Key exchange and digital signatures
+Examples	AES, DES	RSA, ECC
+
+Q6. What is hashing, and how is it different from encryption?
+
+Hashing is the process of converting input data into a fixed-length value called a hash or message digest. It is a one-way process and normally cannot be reversed to obtain the original data.
+
+Difference:
+- Encryption is reversible using the correct decryption key.
+- Hashing is designed to be irreversible.
+- Encryption provides confidentiality, while hashing helps verify data integrity.
+Example: SHA-256 is a commonly used cryptographic hash algorithm.
+
+Q7. Critically evaluate why achieving confidentiality, integrity and non-repudiation together is challenging in a real-world communication system.
+
+Achieving confidentiality, integrity and non-repudiation together is challenging because each requires different security mechanisms. Encryption protects confidentiality, hash functions and message authentication codes help protect integrity, while digital signatures provide non-repudiation. These mechanisms also require secure key management, correct implementation and trusted authentication. A weakness in any one mechanism can affect the security of the complete system.
+
+Q8. Explain the role of cryptography in network security. Discuss how it helps achieve confidentiality, integrity, authentication, and non-repudiation, with one example for each.
+
+Cryptography plays an important role in network security by protecting information transmitted between computers and devices over networks.
+
+1. Confidentiality
+
+It ensures that only authorized users can read transmitted information.
+
+Example: HTTPS encrypts information exchanged between a browser and a website.
+
+2. Integrity
+
+It ensures that information is not modified during transmission.
+
+Example: Cryptographic hash functions help detect changes in downloaded files.
+
+3. Authentication
+
+It verifies the identity of communicating users, servers or devices.
+
+Example: Digital certificates help verify the identity of websites.
+
+4. Non-repudiation
+
+It prevents a sender from denying that they digitally signed a particular message or document.
+
+Example: A digital signature on an electronic contract provides evidence of the signer's approval.
+
+Thus, cryptography protects network communication against unauthorized access, modification and impersonation.
+
+Q9. Name any two network security protocols that use cryptographic techniques and briefly state their purpose.
+1. SSL/TLS: Protects communication between web browsers and servers by providing encryption and authentication.
+2. IPSec: Secures communication over IP networks by providing authentication, integrity and confidentiality.
+Q10. Critically discuss the evolution of cryptography from classical ciphers to modern cryptographic systems, evaluating the impact of computational advances on cryptographic security.
+
+Cryptography has developed from simple manual encryption techniques into advanced computer-based security systems.
+
+1. Classical Cryptography
+
+Early cryptography used simple substitution and transposition methods.
+
+Examples:
+- Caesar Cipher
+- Vigenère Cipher
+These methods were easy to use but could be broken using frequency analysis and other manual techniques.
+
+2. Mechanical Cryptography
+
+During World War II, the Enigma machine was used to encrypt military communication. Its encryption system was more complex than classical manual ciphers.
+
+3. Modern Symmetric Cryptography
+
+With the development of computers, stronger encryption algorithms were introduced.
+- DES was adopted in 1977.
+- AES was adopted in 2001 and provides stronger security than DES.
+4. Asymmetric Cryptography
+
+In 1976, Diffie and Hellman introduced the concept of public-key cryptography. RSA was developed in 1977, making secure key exchange and digital signatures possible.
+
+Impact of computational advances:
+- Computers can test millions or billions of possible keys.
+- Old encryption methods can be broken more easily.
+- Modern algorithms use longer keys and complex mathematical operations.
+- Advanced computing has improved both encryption techniques and cryptanalysis.
+- Quantum computing may create future threats to RSA and other public-key systems.
+Therefore, cryptography continues to evolve to protect information against increasingly powerful security threats.
+
+Q11. Trace the historical development of cryptographic techniques, starting from classical methods through to modern computer-based cryptography. Highlight key turning points.
+
+The development of cryptography can be divided into several stages:
+1. Caesar Cipher: An ancient substitution cipher in which each letter is shifted by a fixed number of positions.
+2. Vigenère Cipher: A polyalphabetic substitution cipher that uses a keyword for encryption.
+3. World War II – Enigma Machine: Germany used the Enigma machine to encrypt military messages. Its code-breaking played an important role in cryptographic history.
+4. Public-Key Cryptography (1976): Whitfield Diffie and Martin Hellman introduced the concept of public-key cryptography.
+5. RSA (1977): Rivest, Shamir and Adleman developed the RSA public-key algorithm.
+6. DES (1977): The Data Encryption Standard became an important symmetric encryption standard.
+7. AES (2001): The Advanced Encryption Standard replaced DES as a stronger and more secure encryption standard.
+Conclusion: Cryptography developed from simple manual ciphers to powerful mathematical and computer-based algorithms to meet the security requirements of modern communication.
+
+Q12. Who introduced the concept of public-key cryptography, and in which year?
+
+Whitfield Diffie and Martin Hellman introduced the concept of public-key cryptography in 1976.
