@@ -1,0 +1,360 @@
+1. Explain the basic principles of symmetric cryptography. Describe plaintext, ciphertext, secret key, encryption algorithm and decryption algorithm. Explain Kerckhoffs's principle.
+Symmetric cryptography is an encryption technique in which the same secret key is used for both encryption and decryption.
+
+Main components:
+1. Plaintext: Original readable message.
+2. Ciphertext: Encrypted, unreadable message.
+3. Secret Key: Common key used for encryption and decryption.
+4. Encryption Algorithm: Converts plaintext into ciphertext.
+5. Decryption Algorithm: Converts ciphertext back into plaintext.
+Working diagram:
+Plaintext
+
+Original message
+
+
+Encryption Algorithm + Secret Key
+
+
+Ciphertext
+
+Encrypted message
+
+
+Decryption Algorithm + Same Secret Key
+
+
+Original Plaintext
+
+
+Kerckhoffs's Principle:
+
+Kerckhoffs's principle states that a cryptographic system should remain secure even if everything about the system is publicly known except the secret key. Security should depend on the secrecy of the key, not the secrecy of the algorithm.
+
+Examples of symmetric algorithms are AES, DES and 3DES.
+Q2. Distinguish between stream ciphers and block ciphers. Discuss confusion, diffusion and block cipher modes of operation.
+Stream Cipher:
+
+A stream cipher encrypts data one bit or one byte at a time. It generates a stream of key material that is combined with plaintext.
+
+Example: RC4 (legacy algorithm).
+
+Block Cipher:
+
+A block cipher encrypts data in fixed-size blocks using a secret key.
+
+Example: AES and DES.
+
+Difference:
+Stream Cipher	Block Cipher
+Encrypts one bit or byte at a time.	Encrypts fixed-size blocks.
+Uses a keystream.	Uses block transformations.
+Suitable for continuous data streams.	Suitable for files and stored data.
+Example: RC4.	Example: AES.
+
+Confusion and Diffusion:
+- Confusion: Makes the relationship between the key and ciphertext complex.
+- Diffusion: Spreads the influence of each plaintext bit across many ciphertext bits.
+Block Cipher Modes of Operation:
+
+1. ECB (Electronic Codebook)
+
+Each plaintext block is encrypted independently.
+- Advantage: Simple and allows parallel processing.
+- Disadvantage: Identical plaintext blocks produce identical ciphertext blocks, revealing patterns.
+2. CBC (Cipher Block Chaining)
+
+Each plaintext block is XORed with the previous ciphertext block before encryption. It uses an Initialization Vector (IV) for the first block.
+- Advantage: Hides repeated plaintext patterns.
+- Disadvantage: Encryption is sequential and requires a suitable IV.
+3. CFB (Cipher Feedback)
+
+The previous ciphertext block is encrypted and combined with plaintext using XOR.
+- Advantage: Can encrypt data in smaller units.
+- Disadvantage: Transmission errors can affect subsequent data.
+4. OFB (Output Feedback)
+
+The encryption algorithm generates a keystream that is XORed with plaintext.
+- Advantage: Transmission errors do not propagate through later blocks.
+- Disadvantage: Reusing the same IV and key is dangerous.
+5. CTR (Counter Mode)
+
+A counter value is encrypted to generate a keystream, which is XORed with plaintext.
+- Advantage: Fast and supports parallel processing.
+- Disadvantage: Counter/nonce values must never repeat with the same key.
+Q3. Trace the historical development of symmetric encryption algorithms.
+The development of symmetric encryption has passed through several important stages.
+1. Caesar Cipher: An ancient substitution cipher that shifts letters by a fixed number of positions.
+2. Enigma Machine: Used during World War II to encrypt military communication.
+3. Claude Shannon: His work on information theory and secrecy systems established important foundations for modern cryptography.
+4. Feistel Cipher: Introduced a structure that divides data into two halves and processes them through multiple rounds.
+5. DES (1977): Adopted as a data encryption standard. It uses a 56-bit effective key.
+6. Triple DES: Applies DES three times to improve security.
+7. IDEA: A symmetric block cipher designed to provide strong encryption.
+8. Blowfish: A symmetric block cipher designed by Bruce Schneier.
+9. RC4: A stream cipher that was historically widely used but is now considered insecure.
+10. AES (2001): Selected through an open competition and adopted as the replacement for DES.
+Conclusion: Symmetric encryption developed from simple substitution techniques into advanced algorithms such as AES to provide stronger security and better performance.
+Q4. Explain Caesar, monoalphabetic substitution, Playfair and Vigenère ciphers. Discuss frequency analysis.
+(a) Caesar Cipher
+
+Caesar cipher is a substitution cipher in which each letter is shifted by a fixed number of positions.
+
+Example: Shift = 3
+- Plaintext: HELLO
+- Ciphertext: KHOOR
+Advantages: Simple and easy to understand.
+
+Disadvantages: Only 25 possible non-zero shifts, so it is easy to break.
+
+(b) Monoalphabetic Substitution Cipher
+
+In this cipher, every letter of the plaintext is replaced with a fixed corresponding letter from another alphabet.
+
+Example:
+
+Plaintext: ABC
+Ciphertext: QWE
+
+Advantages: Has more possible substitution arrangements than Caesar cipher.
+
+Disadvantages: Letter frequency patterns remain, making it vulnerable to frequency analysis.
+
+(c) Playfair Cipher
+
+Playfair is a digraph substitution cipher that encrypts two letters at a time using a 5 × 5 key matrix.
+
+Working:
+1. Create a 5 × 5 matrix using a keyword.
+2. Remove repeated letters from the keyword.
+3. Combine I and J in one cell.
+4. Divide plaintext into pairs of letters.
+5. Apply the Playfair rules:
+   - Same row: Replace each letter with the letter to its right.
+   - Same column: Replace each letter with the letter below it.
+   - Different row and column: Replace each letter with the letter in the same row and the other letter's column.
+Advantages: More difficult to break than simple monoalphabetic substitution.
+
+Disadvantages: Can still be attacked using digraph frequency analysis.
+
+(d) Vigenère Cipher
+
+Vigenère is a polyalphabetic substitution cipher that uses a keyword to encrypt plaintext.
+
+Example:
+- Plaintext: ATTACK
+- Key: LEMONL
+- Ciphertext: LXFOPV
+Advantages: Uses multiple substitution alphabets and hides simple letter frequencies better than Caesar cipher.
+
+Disadvantages: Repeated keywords can reveal patterns and allow cryptanalysis.
+
+Frequency Analysis:
+
+Frequency analysis is a technique used to break substitution ciphers by studying how frequently letters appear in a language.
+
+It is effective against Caesar and monoalphabetic ciphers because they preserve letter frequency patterns. It is less effective against Vigenère because multiple substitution alphabets are used. Playfair also makes simple single-letter frequency analysis less effective because it encrypts pairs of letters.
+Q5. Describe rail fence and columnar transposition techniques. Explain product ciphers and the one-time pad.
+1. Rail Fence Cipher
+
+Rail Fence is a transposition cipher in which plaintext letters are written diagonally across multiple rows and then read row by row.
+
+Example with 2 rails:
+
+Plaintext: HELLOWORLD
+H   L   O   O   L
+  E   L   W   R   D
+
+
+Ciphertext: HLOOLELWRD
+
+2. Columnar Transposition Cipher
+
+In this cipher, plaintext is written row by row under a keyword. Columns are then read in the order determined by the alphabetical order of the keyword letters.
+
+It changes the positions of characters without changing the characters themselves.
+
+3. Product Cipher
+
+A product cipher combines substitution and transposition techniques to provide stronger encryption.
+- Substitution changes the values of characters.
+- Transposition changes their positions.
+Modern block ciphers use repeated substitution and permutation operations to achieve confusion and diffusion.
+
+4. One-Time Pad
+
+A one-time pad is an encryption technique that uses a truly random secret key of the same length as the message.
+
+Encryption is performed using XOR:
+\[
+C=P\oplus K
+\]
+
+Decryption is:
+\[
+P=C\oplus K
+\]
+
+Advantages:
+- Provides perfect secrecy when used correctly.
+- Cannot be broken by ciphertext analysis alone.
+Disadvantages:
+- Requires a truly random key.
+- Key must be as long as the message.
+- Key distribution is difficult.
+- The key must never be reused.
+Q6. Describe the structure of DES. Explain Feistel structure, block size, key size, permutations, rounds, round function and key schedule.
+DES stands for Data Encryption Standard. It is a symmetric block cipher adopted in 1977.
+
+Main features:
+- Block size: 64 bits.
+- Effective key size: 56 bits.
+- Input key size: 64 bits, including 8 parity bits.
+- Number of rounds: 16.
+- Structure: Feistel network.
+Working of DES:
+1. A 64-bit plaintext block is given as input.
+2. Initial Permutation (IP) rearranges the input bits.
+3. The block is divided into two 32-bit halves: Left (L) and Right (R).
+4. The data passes through 16 Feistel rounds.
+5. The two halves are combined after the rounds.
+6. Final Permutation (FP), which is the inverse of IP, is applied.
+7. A 64-bit ciphertext is produced.
+DES Round Function:
+
+Each round uses the following operations:
+1. Expansion: Expands the 32-bit right half into 48 bits.
+2. Key Mixing: XORs the expanded data with a 48-bit round key.
+3. S-box Substitution: Converts 48 bits into 32 bits.
+4. P-box Permutation: Rearranges the 32 bits.
+Feistel Round Formula:
+\[
+L_i=R_{i-1}
+\]
+
+\[
+R_i=L_{i-1}\oplus F(R_{i-1},K_i)
+\]
+
+Where:
+- L = Left half
+- R = Right half
+- K = Round key
+- F = Round function
+DES diagram:
+64-bit Plaintext
+
+Initial Permutation (IP)
+
+Split into L (32 bits) and R (32 bits)
+
+16 Feistel Rounds
+
+Expansion → XOR with round key → S-box → P-box
+
+
+Final Permutation (FP)
+
+64-bit Ciphertext
+
+Key Schedule:
+
+DES generates sixteen 48-bit round keys from the original 56-bit effective key. It uses permutation, splitting, left shifts and compression permutation.
+Q7. Discuss the strengths and weaknesses of DES. Explain Double DES and Triple DES.
+Strengths of DES:
+1. Uses a well-defined Feistel structure.
+2. Provides a good avalanche effect.
+3. Uses multiple rounds of encryption.
+4. Was widely used in banking and communication systems.
+Weaknesses of DES:
+1. Its 56-bit key is too short for modern security requirements.
+2. It is vulnerable to brute-force attacks.
+3. It can be attacked using differential and linear cryptanalysis.
+4. It is no longer considered secure for protecting sensitive information.
+Avalanche Effect:
+
+The avalanche effect means that changing even one bit of plaintext or the key should produce a significant change in the ciphertext.
+
+Brute-Force Attack:
+
+An attacker tries different possible keys until the correct key is found. DES's 56-bit key makes this attack practical with modern computing resources.
+
+Double DES:
+
+Double DES applies the DES algorithm twice using two keys.
+\[
+C=E_{K2}(E_{K1}(P))
+\]
+
+It was developed to improve security but is vulnerable to the meet-in-the-middle attack, which reduces its expected security advantage.
+
+Triple DES:
+
+Triple DES applies DES three times.
+\[
+C=E_{K3}(D_{K2}(E_{K1}(P)))
+\]
+
+It has two common keying options:
+- Two-key 3DES: Uses two independent keys, with the first key reused in the third operation.
+- Three-key 3DES: Uses three independent keys.
+Triple DES offers stronger security than DES but is slower than AES and is now deprecated for most modern applications.
+Q8. Explain AES, its block size, key lengths, rounds, transformations and comparison with DES.
+AES stands for Advanced Encryption Standard. It is a modern symmetric block cipher selected in 2001 to replace DES.
+
+Main Features:
+- Block size: 128 bits.
+- Key lengths: 128, 192 and 256 bits.
+- AES-128: 10 rounds.
+- AES-192: 12 rounds.
+- AES-256: 14 rounds.
+Four AES Transformations:
+
+1. SubBytes
+
+Each byte is replaced using a substitution table called the S-box.
+
+2. ShiftRows
+
+Rows of the state matrix are shifted cyclically by different numbers of positions.
+
+3. MixColumns
+
+Each column is mathematically transformed to provide diffusion.
+
+4. AddRoundKey
+
+The state is combined with the round key using XOR.
+
+AES Encryption Process:
+1. Initial AddRoundKey.
+2. SubBytes.
+3. ShiftRows.
+4. MixColumns.
+5. AddRoundKey.
+6. Repeat the main rounds.
+7. Final round without MixColumns.
+Key Expansion:
+
+AES uses a key expansion process to generate separate round keys from the original secret key.
+
+AES Decryption:
+
+Decryption applies the inverse transformations:
+- InvShiftRows
+- InvSubBytes
+- AddRoundKey
+- InvMixColumns
+The inverse transformations are applied in the appropriate reverse order to recover the original plaintext.
+
+Difference between AES and DES:
+Basis	DES	AES
+Block size	64 bits	128 bits
+Key size	56 effective bits	128, 192, 256 bits
+Structure	Feistel network	Substitution-permutation network
+Rounds	16	10, 12, 14
+Security	Insecure today	Secure when properly implemented
+Performance	Older and less suitable	Generally faster and more efficient in modern systems
+
+Conclusion: AES provides stronger security, larger key sizes and better modern performance than DES.
+
