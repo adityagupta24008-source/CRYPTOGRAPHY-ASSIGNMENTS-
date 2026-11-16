@@ -1,0 +1,387 @@
+Q1. Explain the basic principles of asymmetric cryptography. Describe public and private keys and how the system provides confidentiality, authentication and non-repudiation.
+Asymmetric cryptography, also called public-key cryptography, is an encryption technique that uses two different but mathematically related keys.
+
+1. Public Key
+- It is shared openly with other people.
+- It is used for encryption or signature verification.
+- It cannot practically reveal the private key.
+2. Private Key
+- It is kept secret by its owner.
+- It is used for decryption or creating digital signatures.
+- It must be protected from unauthorized access.
+How it provides security:
+1. Confidentiality: Alice encrypts a message using Bob's public key. Only Bob can decrypt it using his private key.
+2. Authentication: Alice signs a message using her private key. Bob verifies the signature using Alice's public key.
+3. Non-repudiation: A valid digital signature provides evidence that the message was signed using the corresponding private key.
+Encryption and Decryption Diagram:
+Alice
+
+Original plaintext
+
+
+Encrypt using Bob's Public Key
+
+
+Encrypted Ciphertext
+
+
+Bob decrypts using his Private Key
+
+
+Original Plaintext
+
+
+Examples: RSA, ECC and ElGamal.
+Q2. Differentiate between symmetric and asymmetric cryptography.
+Basis	Symmetric Cryptography	Asymmetric Cryptography
+Number of keys	One secret key	Two keys
+Key distribution	Difficult	Easier
+Speed	Fast	Comparatively slow
+Key length	Generally shorter	Generally longer
+Security	Depends on secret key protection	Depends on private key protection and mathematical problems
+Scalability	Requires \(n(n-1)/2\) pairwise keys for n users	Each user maintains a key pair
+Applications	File and database encryption	Digital signatures and key exchange
+Examples	AES, DES	RSA, ECC
+
+Conclusion: Symmetric cryptography is suitable for fast data encryption, whereas asymmetric cryptography is useful for secure key exchange, authentication and digital signatures.
+Q3. Describe the main techniques and building blocks used in public-key cryptography.
+Public-key cryptography uses several techniques to provide secure communication.
+
+1. Trapdoor One-Way Functions
+
+A trapdoor one-way function is a mathematical function that is easy to calculate in one direction but difficult to reverse without special secret information called a trapdoor.
+
+Example: RSA relies on the difficulty of factoring a large composite number.
+
+2. Diffie-Hellman Key Exchange
+
+Diffie-Hellman is a technique that allows two parties to establish a shared secret key over an insecure communication channel.
+
+Working:
+1. Alice and Bob agree on public parameters.
+2. Alice selects a private value.
+3. Bob selects another private value.
+4. Both calculate and exchange public values.
+5. Both independently calculate the same shared secret.
+The shared secret can then be used with symmetric encryption.
+
+3. Digital Signatures
+
+Digital signatures verify the authenticity and integrity of digital messages.
+
+Working:
+1. The sender generates a hash of the message.
+2. The sender signs the hash using their private key.
+3. The receiver verifies the signature using the sender's public key.
+4. The receiver checks the message integrity.
+4. Public Key Infrastructure (PKI)
+
+PKI is a system used to manage public keys and digital certificates.
+
+Main components:
+- Certificate Authority (CA)
+- Digital Certificates
+- Public and Private Keys
+- Registration Authority (RA)
+A digital certificate connects an identity with a public key and is digitally signed by a trusted certificate authority.
+
+Conclusion: These techniques help provide confidentiality, authentication, integrity and secure key management.
+Q4. Trace the historical development of public-key cryptography.
+Public-key cryptography developed to solve the problem of securely sharing secret keys.
+
+1. Key Distribution Problem
+
+In traditional symmetric cryptography, two parties need to share the same secret key. Sharing this key securely over an insecure network was difficult.
+
+2. Diffie-Hellman (1976)
+
+Whitfield Diffie and Martin Hellman introduced the concept of public-key cryptography in 1976.
+
+They also introduced the Diffie-Hellman key exchange method, which allows two parties to establish a shared secret over an insecure channel.
+
+3. RSA (1977)
+
+Ron Rivest, Adi Shamir and Leonard Adleman developed the RSA algorithm in 1977.
+
+RSA uses two keys:
+- Public key for encryption.
+- Private key for decryption.
+It is also used for digital signatures.
+
+4. Earlier Classified Work at GCHQ
+
+Before the public announcement of public-key cryptography, classified research was conducted at the British Government Communications Headquarters (GCHQ).
+- James Ellis developed the concept of non-secret encryption.
+- Clifford Cocks developed an RSA-like public-key algorithm.
+- Malcolm Williamson developed an approach similar to Diffie-Hellman key exchange.
+This work remained classified for several years.
+
+5. ElGamal Cryptography
+
+Taher ElGamal introduced the ElGamal encryption system in 1985. It is based on the discrete logarithm problem.
+
+6. Elliptic Curve Cryptography (ECC)
+
+ECC uses mathematical operations on elliptic curves. It provides strong security with comparatively smaller key sizes.
+
+Conclusion: Public-key cryptography solved important key distribution problems and became essential for modern internet security.
+Q5. Discuss the advantages and disadvantages of asymmetric cryptography. Why do real-world systems such as TLS use hybrid cryptosystems?
+Advantages:
+1. Uses separate public and private keys.
+2. Simplifies public-key distribution.
+3. Supports digital signatures.
+4. Provides authentication.
+5. Helps establish shared secret keys securely.
+Disadvantages:
+1. Slower than symmetric encryption.
+2. Requires larger keys for comparable security.
+3. Requires secure private-key storage.
+4. Depends on trusted public-key verification.
+5. Can require more computational resources.
+Hybrid Cryptosystem:
+
+A hybrid cryptosystem combines symmetric and asymmetric cryptography to achieve better security and performance.
+
+Why TLS uses hybrid cryptography:
+- Asymmetric cryptography helps authenticate the server and establish shared secret keys.
+- Symmetric cryptography encrypts the actual communication because it is faster.
+- Hashing and authentication mechanisms help detect unauthorized changes.
+Example: HTTPS Website
+
+When a user opens an HTTPS website:
+1. The browser connects to the server.
+2. The server provides its digital certificate.
+3. The browser verifies the certificate.
+4. TLS uses a key exchange mechanism, commonly based on ephemeral Diffie-Hellman, to establish shared secret material.
+5. Both sides derive symmetric session keys.
+6. AES-GCM or ChaCha20-Poly1305 protects the communication.
+Conclusion: Hybrid cryptography combines the convenient key establishment of asymmetric cryptography with the speed of symmetric encryption.
+Q6. Describe the RSA algorithm in detail. Explain key generation, encryption and decryption with formulas.
+RSA stands for Rivest–Shamir–Adleman. It is an asymmetric cryptographic algorithm that uses public and private keys.
+
+1. Key Generation
+
+RSA key generation involves the following steps:
+
+Step 1: Choose two prime numbers
+
+Select two prime numbers:
+\[
+p=3,\quad q=11
+\]
+
+Step 2: Calculate modulus
+\[
+n=p\times q
+\]
+
+\[
+n=3\times11=33
+\]
+
+Step 3: Calculate Euler's Totient Function
+\[
+\phi(n)=(p-1)(q-1)
+\]
+
+\[
+\phi(n)=2\times10=20
+\]
+
+Step 4: Select Public Exponent
+
+Choose a number \(e\) such that:
+\[
+1<e<20
+\]
+
+\[
+gcd(e,20)=1
+\]
+
+Choose:
+\[
+e=3
+\]
+
+Step 5: Calculate Private Exponent
+
+Find \(d\) such that:
+\[
+d\times e\equiv1\pmod{20}
+\]
+
+Choose:
+\[
+d=7
+\]
+
+Because:
+\[
+3\times7=21\equiv1\pmod{20}
+\]
+
+Therefore:
+- Public Key = (3, 33)
+- Private Key = (7, 33)
+2. Encryption
+
+The encryption formula is:
+\[
+C=M^e\bmod n
+\]
+
+Suppose plaintext message:
+\[
+M=4
+\]
+
+\[
+C=4^3\bmod33
+\]
+
+\[
+C=64\bmod33=31
+\]
+
+Ciphertext = 31.
+
+3. Decryption
+
+The decryption formula is:
+\[
+M=C^d\bmod n
+\]
+
+\[
+M=31^7\bmod33
+\]
+
+\[
+M=4
+\]
+
+Original message = 4.
+
+RSA Flowchart:
+Start
+
+Choose two prime numbers p and q
+
+Calculate n and φ(n)
+
+Select public exponent e and calculate private exponent d
+
+Encrypt: C = Mᵉ mod n
+
+Decrypt: M = Cᵈ mod n
+
+Original Message Recovered
+
+Why does RSA decryption work?
+
+RSA is based on modular arithmetic. The public and private exponents are mathematically related:
+\[
+ed\equiv1\pmod{\phi(n)}
+\]
+
+This relationship ensures that decryption recovers the original message when the RSA conditions are satisfied.
+
+Note: These small numbers are only for educational demonstration. Real RSA uses very large keys and secure padding schemes.
+Q7. What is meant by the key size of an RSA system? Explain factoring security, recommended key sizes, ECC comparison and quantum threats.
+RSA Key Size:
+
+RSA key size refers to the number of bits in its modulus \(n\).
+
+For example, a 2048-bit RSA system has a modulus containing 2048 bits.
+
+Security of RSA:
+
+RSA security depends mainly on the mathematical difficulty of factoring a large composite number into its two prime factors.
+
+An attacker who successfully factors the modulus may be able to calculate the private key.
+
+Common RSA Key Sizes:
+RSA Key Size	Security Status
+1024 bits	Insecure for modern use
+2048 bits	Common minimum recommendation for new general-purpose deployments
+3072 bits	Provides stronger security
+4096 bits	Higher security margin but slower operations
+
+Comparison with ECC:
+
+ECC provides comparable security using smaller key sizes.
+RSA Key Size	Approximate ECC Equivalent
+1024 bits	160-bit ECC (historical comparison; both are inadequate today)
+2048 bits	224–255-bit ECC
+3072 bits	256-bit ECC
+7680 bits	384-bit ECC
+
+Quantum Computer Threat:
+
+Quantum computers may threaten RSA because Shor's algorithm can theoretically factor large integers efficiently.
+
+This could break RSA encryption and digital signatures if sufficiently powerful, fault-tolerant quantum computers become available.
+
+Conclusion: Larger RSA key sizes provide stronger protection against classical attacks, but future quantum threats make post-quantum cryptography important.
+Q8. Discuss major security considerations and known attacks on RSA. Explain OAEP, digital signatures and good security practices.
+RSA is widely used in cryptography, but improper implementation can make it vulnerable to several attacks.
+
+1. Factoring Attacks
+
+An attacker attempts to factor the RSA modulus \(n\) into its two prime factors \(p\) and \(q\). If successful, the attacker can calculate the private key.
+
+2. Small Public Exponent and Small Message Attacks
+
+Using a small public exponent with improperly padded or related small messages can expose plaintext information.
+
+Proper randomized padding such as OAEP helps prevent these attacks.
+
+3. Common Modulus Attack
+
+If the same RSA modulus is used with different public exponents and related messages, an attacker may recover the original message under certain conditions.
+
+Therefore, independent and properly generated RSA key pairs should be used.
+
+4. Timing and Side-Channel Attacks
+
+These attacks analyze information such as execution time, power consumption or electromagnetic leakage during RSA operations.
+
+They may reveal information about the private key.
+
+5. Chosen-Ciphertext Attacks
+
+An attacker submits specially selected ciphertexts to a decryption system and studies the responses to obtain information about the plaintext or private key.
+
+Secure padding and carefully designed implementations help prevent these attacks.
+
+6. OAEP Padding
+
+OAEP stands for Optimal Asymmetric Encryption Padding.
+
+It is a randomized padding scheme used with RSA encryption.
+
+Importance:
+- Adds randomness to plaintext encoding.
+- Prevents several attacks on textbook RSA.
+- Helps protect against chosen-ciphertext attacks when correctly implemented.
+7. RSA Digital Signatures
+
+RSA can also be used to create and verify digital signatures.
+
+Working:
+1. The sender generates a hash of the message.
+2. The sender signs the hash using their private key with a secure signature scheme such as RSA-PSS.
+3. The receiver verifies the signature using the sender's public key.
+4. The receiver checks the message integrity.
+8. Good Practices for Secure RSA Deployment
+1. Use RSA keys of at least 2048 bits.
+2. Generate keys using secure random number generators.
+3. Keep private keys confidential.
+4. Use OAEP for RSA encryption.
+5. Use RSA-PSS for digital signatures.
+6. Avoid insecure textbook RSA.
+7. Protect private keys using secure storage.
+8. Use trusted digital certificates.
+9. Keep cryptographic software updated.
+10. Plan for future post-quantum security requirements.
